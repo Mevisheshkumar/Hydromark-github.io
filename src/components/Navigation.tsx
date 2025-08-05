@@ -41,7 +41,7 @@ const Navigation = () => {
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="text-xl font-bold bg-gradient-ocean bg-clip-text text-transparent">
-              Hydromark
+              HydroMark
             </span>
           </Link>
 
@@ -51,7 +51,7 @@ const Navigation = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`font-medium transition-colors duration-200 relative group ${
+                className={`font-medium transition-colors bg-gradient-button bg-clip-text text-transparent duration-200 relative group ${
                   location.pathname === link.path
                     ? "text-primary"
                     : "text-foreground hover:text-primary"
@@ -59,7 +59,8 @@ const Navigation = () => {
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-ocean transition-all duration-300 ${
+                //underline formating. 
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-hero transition-all duration-300 ${
                     location.pathname === link.path
                       ? "w-full"
                       : "w-0 group-hover:w-full"

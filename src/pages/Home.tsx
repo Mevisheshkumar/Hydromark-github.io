@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ParallaxSection from "@/components/ParallaxSection";
 import FloatingBottles from "@/components/FloatingBottles";
+import AutoSlidingCarousel from "@/components/AutoSlidingCarousel";
 import { ArrowRight, Building2, GraduationCap, Hotel, Utensils, Calendar, Leaf, Users, Award } from "lucide-react";
 import heroBottle from "@/assets/hero-bottle.jpg";
+import bottle1 from "@/assets/B1.png";
+import bottle2 from "@/assets/bottle-with splash.png";
+import bottle3 from "@/assets/all-bottle.png";
+import bottle4 from "@/assets/patent-bottle.png";
+import bottle5 from "@/assets/Bottle-2.png";
 import productShowcase from "@/assets/product-showcase.jpg";
 import sustainability from "@/assets/sustainability.jpg";
 
@@ -12,22 +18,33 @@ const Home = () => {
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const observerOptions = {
+      threshold: [0.1, 0.3, 0.5],
+      rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in-up");
+            // Use requestAnimationFrame for smoother animation triggering
+            requestAnimationFrame(() => {
+              entry.target.classList.add("animate-fade-in-up");
+            });
           }
         });
       },
-      { threshold: 0.1 }
+      observerOptions
     );
 
-    document.querySelectorAll(".fade-in").forEach((el) => {
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((el) => {
       observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -38,10 +55,10 @@ const Home = () => {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-hero text-white mb-6 font-bold">
-              Your Brand,{" "}
-              <span className="bg-gradient-to-r from-secondary-light to-secondary bg-clip-text text-transparent">
-                Bottled.
+            <h1 className="text-hero mb-6 font-bold bg-gradient-brand bg-clip-text text-transparent">
+              Hydro {" "}
+              <span className="bg-gradient-brand bg-clip-text text-transparent">
+                Mark
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto font-light">
@@ -49,7 +66,7 @@ const Home = () => {
               and showcase your commitment to sustainability.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="secondary" size="xl" asChild>
+              <Button variant="hero" size="xl" asChild>
                 <Link to="/contact">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -61,11 +78,24 @@ const Home = () => {
           </div>
         </div>
 
-        <ParallaxSection speed={0.3} className="absolute right-0 top-1/2 transform -translate-y-1/2">
+        <ParallaxSection speed={0.5} className="absolute inset-0">
           <img
-            src={heroBottle}
+            src={bottle1}
             alt="Premium branded water bottle"
-            className="w-96 h-auto opacity-80 hover:opacity-100 transition-opacity duration-500"
+            className="
+              w-400px h-900px
+              sm:w-400px sm:h-900px
+              md:w-400px md:h-900px
+              lg:w-400px lg:h-900px
+              xl:w-40px xl:h-90px
+              2xl:w-20px 2xl:h-60px
+              opacity-50 hover:opacity-40
+              transition-all duration-500 ease-in-out
+              object-cover
+              absolute inset-0
+              min-h-screen
+              max-w-auto
+            "
           />
         </ParallaxSection>
       </section>
@@ -124,7 +154,7 @@ const Home = () => {
               </p>
               <div className="space-y-4 mb-8">
                 {[
-                  "Premium glass and eco-friendly materials",
+                  "Premium eco-friendly materials",
                   "Full-color custom label printing",
                   "Minimum order quantities to fit your needs",
                   "Fast turnaround times for events",
@@ -141,8 +171,108 @@ const Home = () => {
             </div>
 
             <ParallaxSection speed={0.2} className="fade-in">
+              <AutoSlidingCarousel
+                images={[
+                  {
+                    src: bottle2,
+                    alt: "Custom branded water bottles showcase"
+                  },
+                  {
+                    src: bottle5,
+                    alt: "Premium bottle showcase"
+                  }
+                ]}
+                autoPlayInterval={4000}
+                showControls={true}
+              />
+            </ParallaxSection>
+          </div>
+        </div>
+      </section>
+
+       {/* Patent Section */}
+       <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <ParallaxSection speed={0.2} className="fade-in lg:order-first order-last">
               <img
-                src={productShowcase}
+                src={bottle4}
+                alt="Sustainable water bottle production"
+                className="w-full h-auto rounded-2xl shadow-ocean hover-lift"
+              />
+            </ParallaxSection>
+
+            <div className="fade-in">
+              <h2 className="text-section-title text-foreground mb-6">
+              A Special Bottle {" "}
+                <span className="bg-gradient-ocean bg-clip-text text-transparent">
+                Made for Your Brand
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+              Hydromark’s special patent water bottle is made with a unique design 
+              that’s stylish, strong, and perfect for daily use. It’s created to 
+              help your brand look better and last longer
+              </p>
+              
+              {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                {[
+                  { icon: Leaf, title: "Eco Materials", stat: "100%" },
+                  { icon: Users, title: "Client Satisfaction", stat: "99%" },
+                  { icon: Award, title: "Quality Guarantee", stat: "5★" },
+                ].map((item, index) => (
+                  <div key={index} className="text-center p-4 rounded-lg glass">
+                    <item.icon className="h-8 w-8 text-secondary mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-primary mb-1">{item.stat}</div>
+                    <div className="text-sm text-muted-foreground">{item.title}</div>
+                  </div>
+                ))}
+              </div> */}
+
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/contact">Made Your Own Bottle Now!</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* my product section */}
+      <section className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="fade-in lg:order-first order-first">
+              <h2 className="text-section-title text-foreground mb-6">
+              Choose the Right {' '}
+                <span className="bg-gradient-ocean bg-clip-text text-transparent">
+                Size for You
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+              At Hydromark, we provide bottles that suit every occasion—whether 
+              it's for a formal table setup, room service, events, or daily use. 
+              All our bottles maintain the same premium look and quality, no matter the size.
+              </p>
+              <div className="space-y-4 mb-8">
+                <p className="text-lg text-muted-foreground">Available in.</p>
+                {[
+                  '1 Litre',
+                  '500 ml',
+                  '250 ml',
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-gradient-ocean rounded-full" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact">Grab Yours Bottle</Link>
+              </Button>
+            </div>
+            <ParallaxSection speed={0.2} className="fade-in lg:order-last order-last">
+              <img
+                src={bottle3}
                 alt="Custom branded water bottles showcase"
                 className="w-full h-auto rounded-2xl shadow-ocean hover-lift"
               />
@@ -151,8 +281,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sustainability Section */}
-      <section className="py-20 bg-background">
+            {/* Sustainability Section */}
+            <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ParallaxSection speed={0.2} className="fade-in lg:order-first order-last">
@@ -176,16 +306,16 @@ const Home = () => {
                 resonates with environmentally conscious customers.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8">
                 {[
                   { icon: Leaf, title: "Eco Materials", stat: "100%" },
                   { icon: Users, title: "Client Satisfaction", stat: "99%" },
                   { icon: Award, title: "Quality Guarantee", stat: "5★" },
                 ].map((item, index) => (
-                  <div key={index} className="text-center p-4 rounded-lg glass">
-                    <item.icon className="h-8 w-8 text-secondary mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-primary mb-1">{item.stat}</div>
-                    <div className="text-sm text-muted-foreground">{item.title}</div>
+                  <div key={index} className="text-center p-2 sm:p-4 rounded-lg glass">
+                    <item.icon className="h-6 w-6 sm:h-8 sm:w-8 text-secondary mx-auto mb-2" />
+                    <div className="text-lg sm:text-2xl font-bold text-primary mb-1">{item.stat}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">{item.title}</div>
                   </div>
                 ))}
               </div>
@@ -209,7 +339,7 @@ const Home = () => {
               Join hundreds of satisfied clients who've elevated their brand 
               with Hydromark's premium custom water bottles.
             </p>
-            <Button variant="secondary" size="xl" asChild>
+            <Button variant="hero" size="xl" asChild>
               <Link to="/contact">
                 Get Your Quote Today <ArrowRight className="ml-2 h-5 w-5" />
               </Link>

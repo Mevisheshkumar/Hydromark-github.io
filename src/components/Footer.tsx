@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Droplets, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Droplets, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,13 +13,14 @@ const Footer = () => {
               <span className="text-2xl font-bold">Hydromark</span>
             </div>
             <p className="text-background/80 mb-6 max-w-md">
-              Premium custom-branded water bottles for restaurants, resorts, hotels, 
-              colleges, and events. Sustainable branding solutions that build loyalty 
-              and engage your customers.
+            We provide custom-branded water bottles specially designed for restaurants, 
+            resorts, hotels, colleges, and events. Our goal is to help you promote your brand 
+            in a unique and refreshing way, while building trust, engagement, and loyalty with 
+            your customers.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/hydromark01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-background/10 rounded-full hover:bg-background/20 transition-colors duration-200"
@@ -27,18 +28,18 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://wa.me/917579448970"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-background/10 rounded-full hover:bg-background/20 transition-colors duration-200"
               >
-                <Linkedin className="h-5 w-5" />
+                <MessageCircle className="h-5 w-5" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="col-span-1 md:col-span-1">
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -70,11 +71,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-secondary" />
-                <span className="text-background/80">hello@hydromark.com</span>
+                <span className="text-background/80">hydromark0923@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-secondary" />
-                <span className="text-background/80">(555) 123-4567</span>
+                <span className="text-background/80">+91 75794 48970</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-secondary" />
+                <span className="text-background/80">+91 70179 60923</span>
               </div>
             </div>
           </div>

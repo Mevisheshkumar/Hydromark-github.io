@@ -24,9 +24,9 @@ All colors MUST be HSL.
     --primary-dark: 217 91% 45%;
 
     /* Sage Green */
-    --secondary: 158 64% 52%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 158 64% 62%;
+    --secondary: 158, 64%, 52%;
+    --secondary-foreground: 0, 0%, 100%;
+    --secondary-light: 163, 70%, 50%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 20% 65%;
@@ -42,9 +42,11 @@ All colors MUST be HSL.
     --ring: 217 91% 60%;
 
     /* Premium gradients */
-    --gradient-ocean: linear-gradient(135deg, hsl(217 91% 60%), hsl(158 64% 52%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 45%) 50%, hsl(158 64% 52%) 100%);
+    --gradient-ocean: linear-gradient(135deg, hsl(200, 100%, 40%), hsl(200, 78%, 47%));
+    --gradient-hero: linear-gradient(135deg, hsl(238, 52%, 38%) 0%,  hsl(180, 100%, 55%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(0 0% 100% / 0.6));
+    --gradient-button: linear-gradient(135deg, hsl(238, 52%, 38%), hsl(200, 81%, 25%));
+    --gradient-brand: linear-gradient(135deg, hsl(238, 52%, 38%) 0%,  hsl(180, 100%, 55%) 100%);
     
     /* Premium shadows */
     --shadow-ocean: 0 20px 40px -12px hsl(217 91% 60% / 0.25);
@@ -122,29 +124,47 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
   }
+
+  /* GPU acceleration for better performance */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 }
 
 @layer components {
-  /* Premium animations */
+  /* Premium animations with improved performance */
   .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .animate-parallax {
-    transform: translateY(var(--parallax-offset, 0));
+    transform: translateY(var(--parallax-offset, 0)) translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
-  /* Hover effects */
+  /* Improved hover effects with better easing */
   .hover-lift {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .hover-lift:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) translateZ(0);
     box-shadow: var(--shadow-elevated);
   }
 
@@ -164,6 +184,14 @@ All colors MUST be HSL.
     background: var(--gradient-hero);
   }
 
+  .bg-gradient-brand {
+    background: var(--gradient-brand);
+  }
+
+  .bg-gradient-button {
+    background: var(--gradient-button);
+  }
+
   /* Custom shadows */
   .shadow-ocean {
     box-shadow: var(--shadow-ocean);
@@ -172,29 +200,54 @@ All colors MUST be HSL.
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
+
+  /* Smooth fade-in animation for sections */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+  }
+
+  .fade-in.animate-fade-in-up {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
 }
 
 @layer utilities {
-  /* Custom keyframes */
+  /* Improved keyframes with better easing */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg) translateZ(0); 
+    }
+    25% { 
+      transform: translateY(-15px) rotate(1deg) translateZ(0); 
+    }
+    50% { 
+      transform: translateY(-25px) rotate(0deg) translateZ(0); 
+    }
+    75% { 
+      transform: translateY(-15px) rotate(-1deg) translateZ(0); 
+    }
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px) translateZ(0);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) translateZ(0);
     }
   }
 
   /* Typography utilities */
   .text-hero {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: clamp(3.5rem, 12vw, 6rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.02em;

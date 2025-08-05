@@ -98,28 +98,31 @@ const Contact = () => {
               <div className="space-y-6">
                 {[
                   {
+                    // Email
                     icon: Mail,
                     title: "Email",
-                    details: "hello@hydromark.com",
+                    details: "hydromark0923@gmail.com",
                     subtitle: "We'll respond within 24 hours"
                   },
                   {
+                    // Phone
                     icon: Phone,
                     title: "Phone",
-                    details: "(555) 123-4567",
-                    subtitle: "Mon-Fri, 9AM-6PM EST"
+                    details: "+91 75794 48970, +91 70179 60923",
+                    subtitle: "Mon-Sat, 9AM-6PM"
                   },
                   {
+                    // Address
                     icon: MapPin,
                     title: "Address",
-                    details: "123 Business St, Suite 100",
-                    subtitle: "New York, NY 10001"
+                    details: "Beldi Salhapur, Dhandhedi Khwazgipur",
+                    subtitle: "Roorkee, Haridwar PIN - 247667"
                   },
-                  {
+                  { 
                     icon: Clock,
                     title: "Business Hours",
-                    details: "Monday - Friday",
-                    subtitle: "9:00 AM - 6:00 PM EST"
+                    details: "Monday - Saturday",
+                    subtitle: "9:00 AM - 6:00 PM"
                   }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-4">

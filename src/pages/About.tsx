@@ -50,6 +50,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="fade-in">
+              {/* Mission Section */}
               <div className="flex items-center space-x-3 mb-6">
                 <div className="bg-gradient-ocean p-3 rounded-full">
                   <Target className="h-6 w-6 text-white" />
@@ -57,16 +58,19 @@ const About = () => {
                 <h2 className="text-section-title text-foreground">Our Mission</h2>
               </div>
               <p className="text-lg text-muted-foreground mb-6">
-                We believe that every brand has a unique story to tell. Our mission 
-                is to help businesses share that story through beautifully crafted, 
-                sustainable water bottles that create lasting impressions and build 
-                genuine connections with customers.
+              At HydroMark, our mission is to revolutionize how businesses present 
+              themselves by offering customized, high-quality water bottles that not 
+              only quench thirst but also build brand identity. We aim to provide a 
+              sustainable and innovative marketing solution that helps restaurants, 
+              hotels, clinics, and corporates leave a lasting impression—one bottle 
+              at a time.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                From luxury hotels seeking to enhance guest experiences to colleges 
-                building campus community, we partner with organizations that value 
-                quality, sustainability, and authentic brand expression.
+              We are committed to quality, creativity, and reliability—ensuring that 
+              every bottle we deliver speaks your brand’s language.
               </p>
+              
+              {/* Button */}
               <Button variant="hero" size="lg" asChild>
                 <Link to="/contact">Partner With Us</Link>
               </Button>
@@ -97,19 +101,22 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
+                // Sustainability First
                 icon: Leaf,
                 title: "Sustainability First",
-                description: "Every bottle we create contributes to a healthier planet. We use eco-friendly materials and sustainable production processes that reduce environmental impact while maintaining premium quality."
+                description: "Hydromark provides custom-branded water bottles for businesses and events, with a strong focus on eco-friendly materials and reducing plastic waste. Build your brand while caring for the planet."
               },
               {
+                // Client Partnership
                 icon: Heart,
                 title: "Client Partnership",
-                description: "We don't just fulfill orders—we build relationships. Our team works closely with each client to understand their unique needs and create solutions that exceed expectations."
+                description: "We partner with restaurants, hotels, colleges, and event organizers to provide custom-branded water bottles that enhance their brand and customer experience."
               },
               {
+                // Quality Excellence
                 icon: Award,
                 title: "Quality Excellence",
-                description: "Premium quality is non-negotiable. From material selection to final production, every step is carefully monitored to ensure your branded bottles reflect your brand's excellence."
+                description: "We’re committed to delivering top-quality custom water bottles using premium materials and reliable printing. Every bottle is made to look great and last so your brand always stands out."
               }
             ].map((value, index) => (
               <div
@@ -145,8 +152,8 @@ const About = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Happy Clients", icon: Users },
-              { number: "1M+", label: "Bottles Produced", icon: Droplets },
+              { number: "50+", label: "Happy Clients", icon: Users },
+              { number: "500K+", label: "Bottles Produced", icon: Droplets },
               { number: "99%", label: "Client Satisfaction", icon: Heart },
               { number: "100%", label: "Eco-Friendly", icon: Leaf },
             ].map((stat, index) => (
@@ -170,11 +177,18 @@ const About = () => {
           <div className="fade-in">
             <h2 className="text-section-title text-white mb-6">Our Vision</h2>
             <p className="text-xl text-white/90 mb-8">
-              To become the world's leading provider of sustainable branded water bottles, 
-              helping businesses create meaningful connections while protecting our planet 
-              for future generations.
+              Our vision is to become India’s most trusted name in custom-branded 
+              hydration solutions, empowering businesses of all sizes to showcase 
+              their identity through personalized water bottles.
+
+              
             </p>
-            <Button variant="secondary" size="xl" asChild>
+            <p className="text-xl text-white/90 mb-8">
+              We envision a future where every table, office desk, and reception 
+              counter displays a brand's story-beautifully packaged and responsibly 
+              delivered by HydroMark.
+            </p>
+            <Button variant="hero" size="xl" asChild>
               <Link to="/contact">Join Our Mission</Link>
             </Button>
           </div>

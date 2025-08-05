@@ -38,10 +38,9 @@ const Map = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Address</h3>
                     <p className="text-muted-foreground">
-                      123 Business Street<br />
-                      Suite 100<br />
-                      New York, NY 10001<br />
-                      United States
+                      Beldi Salhapur, Dhandhedi Khwazgipur<br />
+                      Roorkee<br />
+                      Haridwar PIN - 247667<br />
                     </p>
                   </div>
 
@@ -63,15 +62,15 @@ const Map = () => {
                       Contact
                     </h3>
                     <div className="space-y-1 text-muted-foreground">
-                      <p>Phone: (555) 123-4567</p>
-                      <p>Email: hello@hydromark.com</p>
+                      <p>Phone: +91 75794 48970, +91 70179 60923</p>
+                      <p>Email: hydromark0923@gmail.com</p>
                     </div>
                   </div>
 
                   <div className="pt-4">
-                    <Button variant="hero" className="w-full" asChild>
+                    <Button variant="hero" className="w-full " asChild>
                       <a
-                        href="https://maps.google.com/?q=123+Business+Street+Suite+100+New+York+NY+10001"
+                        href="https://maps.app.goo.gl/XVrC9oF4xwUpQgfw8"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -81,7 +80,7 @@ const Map = () => {
                     </Button>
                   </div>
 
-                  <div className="pt-4 border-t">
+                  {/* <div className="pt-4 border-t">
                     <h4 className="font-semibold text-foreground mb-2">Transportation</h4>
                     <div className="space-y-2 text-sm text-muted-foreground">
                       <p>🚇 Subway: 1, 2, 3 lines to 14th St-Union Sq</p>
@@ -89,7 +88,7 @@ const Map = () => {
                       <p>🚗 Parking: Street parking and nearby garages</p>
                       <p>🚶 Walk-friendly area with easy access</p>
                     </div>
-                  </div>
+                  </div> */}
                 </CardContent>
               </Card>
             </div>
@@ -100,9 +99,9 @@ const Map = () => {
                 <CardContent className="p-0">
                   <div className="relative w-full h-96 lg:h-full min-h-96 rounded-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9476519598093!2d-73.99251168459394!3d40.73581197932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sUnion%20Square%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27672.98117787581!2d77.91674504999999!3d29.889566449999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39094b0032e2e1c7%3A0x1abe00b8e533fcef!2sHydroMark!5e0!3m2!1sen!2sin!4v1754117495277!5m2!1sen!2sin"
                       width="100%"
-                      height="100%"
+                      height="570px"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
